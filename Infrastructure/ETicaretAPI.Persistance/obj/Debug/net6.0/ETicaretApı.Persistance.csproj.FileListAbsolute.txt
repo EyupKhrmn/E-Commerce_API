@@ -1,0 +1,17 @@
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\bin\Debug\net6.0\ETicaretApı.Persistance.deps.json
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\bin\Debug\net6.0\ETicaretApı.Persistance.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\bin\Debug\net6.0\ETicaretApı.Persistance.pdb
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\bin\Debug\net6.0\ETicaretAPI.Application.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\bin\Debug\net6.0\ETicaretAPI.Domain.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\bin\Debug\net6.0\ETicaretAPI.Application.pdb
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\bin\Debug\net6.0\ETicaretAPI.Domain.pdb
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ETicaretApı.Persistance.csproj.AssemblyReference.cache
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ETicaretApı.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ETicaretApı.Persistance.AssemblyInfoInputs.cache
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ETicaretApı.Persistance.AssemblyInfo.cs
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ETicaretApı.Persistance.csproj.CoreCompileInputs.cache
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ETicaretApı.Persistance.csproj.CopyComplete
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ETicaretApı.Persistance.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\refint\ETicaretApı.Persistance.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ETicaretApı.Persistance.pdb
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Infrastructure\ETicaretApı.Persistance\obj\Debug\net6.0\ref\ETicaretApı.Persistance.dll

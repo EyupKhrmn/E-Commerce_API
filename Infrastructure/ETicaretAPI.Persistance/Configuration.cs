@@ -1,0 +1,18 @@
+using Microsoft.Extensions.Configuration;
+
+namespace ETicaretAPI.Persistance;
+
+static class Configuration
+{
+    public static string connectionString
+    {
+        get
+        {
+            ConfigurationManager configurationManager = new();
+            configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/ETicaretAPI.API"));
+            configurationManager.AddJsonFile("appsettings.json");
+
+            return configurationManager.GetConnectionString("Mssql");
+        }
+    }
+}

@@ -66,3 +66,4 @@ C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaret
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Persistance.dll
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Persistance.pdb
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll

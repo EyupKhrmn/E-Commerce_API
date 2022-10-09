@@ -21,7 +21,8 @@ public class ETicaretApıDbContext : DbContext
            _ = data.State switch
            {
                EntityState.Added => data.Entity.CreatedDate = DateTime.Now,
-               EntityState.Modified => data.Entity.ModifiedDate = DateTime.Now
+               EntityState.Modified => data.Entity.ModifiedDate = DateTime.Now,
+               EntityState.Deleted => data.Entity.ModifiedDate = DateTime.Now
            };
 
        }

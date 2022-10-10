@@ -67,3 +67,6 @@ C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaret
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Persistance.dll
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Persistance.pdb
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll

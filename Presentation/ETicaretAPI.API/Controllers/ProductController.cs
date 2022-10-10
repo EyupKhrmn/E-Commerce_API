@@ -35,14 +35,20 @@ public class ProductController : BaseController
     [HttpPost]
     public async Task<IActionResult> Post(VM_Create_Product model)
     {
-        _productWriteRepository.AddAsync(new()
+        if (ModelState.IsValid)
         {
-            Name = model.Name,
-            Price = model.Price,
-            Stock = model.Stock
-        });
-        await _productWriteRepository.SaveAsync();
-        return StatusCode((int)HttpStatusCode.Created);
+            _productWriteRepository.AddAsync(new()
+            {
+                Name = model.Name,
+                Price = model.Price,
+                Stock = model.Stock
+            });
+            await _productWriteRepository.SaveAsync();
+            return StatusCode((int)HttpStatusCode.Created);
+        }
+
+        return Ok(61);
+
     }
 
     [HttpPut]

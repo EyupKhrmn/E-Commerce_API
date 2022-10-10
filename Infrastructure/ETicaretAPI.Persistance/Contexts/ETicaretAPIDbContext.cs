@@ -22,7 +22,7 @@ public class ETicaretApıDbContext : DbContext
            {
                EntityState.Added => data.Entity.CreatedDate = DateTime.Now,
                EntityState.Modified => data.Entity.ModifiedDate = DateTime.Now,
-               EntityState.Deleted => data.Entity.ModifiedDate = DateTime.Now
+               _ => DateTime.Now
            };
 
        }

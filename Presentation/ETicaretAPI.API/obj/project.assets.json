@@ -897,6 +897,19 @@
           "bin/placeholder/ETicaretAPI.Domain.dll": {}
         }
       },
+      "ETicaretAPI.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ETicaretAPI.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ETicaretAPI.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ETicaretAPI.Infrastructure.dll": {}
+        }
+      },
       "ETicaretAPI.Persistance/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2541,6 +2554,11 @@
       "path": "../../Core/ETicaretAPI.Domain/ETicaretAPI.Domain.csproj",
       "msbuildProject": "../../Core/ETicaretAPI.Domain/ETicaretAPI.Domain.csproj"
     },
+    "ETicaretAPI.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../../Infrastructure/ETicaretAPI.Infrastructure/ETicaretAPI.Infrastructure.csproj",
+      "msbuildProject": "../../Infrastructure/ETicaretAPI.Infrastructure/ETicaretAPI.Infrastructure.csproj"
+    },
     "ETicaretAPI.Persistance/1.0.0": {
       "type": "project",
       "path": "../../Infrastructure/ETicaretAPI.Persistance/ETicaretAPI.Persistance.csproj",
@@ -2550,6 +2568,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "ETicaretAPI.Application >= 1.0.0",
+      "ETicaretAPI.Infrastructure >= 1.0.0",
       "ETicaretAPI.Persistance >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.9",
@@ -2587,6 +2606,9 @@
           "projectReferences": {
             "C:\\Users\\T480_Home\\Desktop\\ETicaretUygulaması\\ETicaretAPI\\Core\\ETicaretAPI.Application\\ETicaretAPI.Application.csproj": {
               "projectPath": "C:\\Users\\T480_Home\\Desktop\\ETicaretUygulaması\\ETicaretAPI\\Core\\ETicaretAPI.Application\\ETicaretAPI.Application.csproj"
+            },
+            "C:\\Users\\T480_Home\\Desktop\\ETicaretUygulaması\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\ETicaretAPI.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\T480_Home\\Desktop\\ETicaretUygulaması\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\ETicaretAPI.Infrastructure.csproj"
             },
             "C:\\Users\\T480_Home\\Desktop\\ETicaretUygulaması\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Persistance\\ETicaretAPI.Persistance.csproj": {
               "projectPath": "C:\\Users\\T480_Home\\Desktop\\ETicaretUygulaması\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Persistance\\ETicaretAPI.Persistance.csproj"

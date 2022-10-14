@@ -1,10 +1,9 @@
-using ETicaretAPI.Application.ViewModels.Products;
-using ETicaretAPI.Domain.Entities;
+using ETicaretAPI.Application.Features.Commads.Product.CreateProduct;
 using FluentValidation;
 
 namespace ETicaretAPI.Application.ValidatonRules;
 
-public class CreateProductValidator : AbstractValidator<VM_Create_Product>
+public class CreateProductValidator : AbstractValidator<CreateProductCommandRequest>
 {
     public CreateProductValidator()
     {

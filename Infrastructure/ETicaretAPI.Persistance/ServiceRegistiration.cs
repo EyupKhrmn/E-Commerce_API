@@ -1,4 +1,5 @@
 using ETicaretAPI.Application.Repositories;
+using ETicaretAPI.Domain.Entities.Identity;
 using ETicaretAPI.Persistance.Contexts;
 using ETicaretAPI.Persistance.Repositories;
 using ETicaretAPI.Persistance.Repositories.Customer;
@@ -17,6 +18,14 @@ public static class ServiceRegistiration
         services.AddDbContext<ETicaretApıDbContext>(options =>
             options.UseSqlServer(Configuration.connectionString));
 
+        services.AddIdentity<AppUser, AppUserRole>(options =>
+        {
+            options.Password.RequiredLength = 3;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequireDigit = false;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireUppercase = false;
+        }).AddEntityFrameworkStores<ETicaretApıDbContext>();
         services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
         services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
         services.AddScoped<IProductReadRepository, ProductReadRepository>();

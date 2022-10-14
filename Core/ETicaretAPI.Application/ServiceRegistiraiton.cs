@@ -1,3 +1,4 @@
+using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,6 +8,6 @@ public static class ServiceRegistiraiton
 {
     public static void AddApplicationServices(this IServiceCollection services)
     {
-        services.AddMediatR(typeof(ServiceRegistiraiton));
+        services.AddMediatR(typeof(ServiceRegistiraiton),typeof(Assembly));
     }
 }

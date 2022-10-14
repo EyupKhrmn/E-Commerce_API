@@ -1,9 +1,11 @@
 
 using ETicaretAPI.Application;
+using ETicaretAPI.Application.Features.Commads.AppUser.CreateUser;
 using ETicaretAPI.Application.ValidatonRules;
 using ETicaretAPI.Infrastructure.Filters;
 using ETicaretAPI.Persistance;
 using FluentValidation.AspNetCore;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 

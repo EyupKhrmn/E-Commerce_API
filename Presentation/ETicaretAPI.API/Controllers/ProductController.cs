@@ -6,10 +6,12 @@ using ETicaretAPI.Application.Features.Commads.Product.UpdateProduct;
 using ETicaretAPI.Application.Features.Queries.Product.GetAllProductQueryRequest;
 using ETicaretAPI.Application.Features.Queries.Product.GetByIdProductQueryRequest;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETicaretAPI.API.Controllers;
 
+[Authorize(AuthenticationSchemes = "Admin")]
 public class ProductController : BaseController
 {
     private readonly IMediator _mediator;

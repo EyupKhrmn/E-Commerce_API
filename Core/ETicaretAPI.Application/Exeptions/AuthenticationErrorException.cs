@@ -1,0 +1,22 @@
+namespace ETicaretAPI.Application.Exeptions;
+
+public class AuthenticationErrorException : Exception
+{
+    public AuthenticationErrorException() : base("Kimlik Doğrulama Hatası !")
+    {
+        
+    }
+
+
+    public AuthenticationErrorException(string? message) : base(message)
+    {
+        
+    }
+
+
+
+    public AuthenticationErrorException(string? message,Exception? innerException) : base(message,innerException)
+    {
+        
+    }
+}

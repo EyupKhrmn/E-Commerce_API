@@ -1,6 +1,7 @@
 
 using System.Text;
 using ETicaretAPI.Application;
+using ETicaretAPI.Application.Abstraction.Token;
 using ETicaretAPI.Application.ValidatonRules;
 using ETicaretAPI.Infrastructure;
 using ETicaretAPI.Infrastructure.Filters;
@@ -16,10 +17,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistanceService();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddAuthentication().AddGoogle(x =>
+{
+    x.ClientId = builder.Configuration["Login:GoogleClientID"];
+    x.ClientSecret = builder.Configuration["Login:GoogleClientSecret"];
+});
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.AddSecurityDefinition("token", new OpenApiSecurityScheme
+    c.AddSecurityDefinition("Token", new OpenApiSecurityScheme
     {
         Type = SecuritySchemeType.ApiKey,
         In = ParameterLocation.Header,

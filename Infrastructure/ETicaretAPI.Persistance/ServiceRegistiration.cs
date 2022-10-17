@@ -1,3 +1,5 @@
+using ETicaretAPI.Application.Abstraction.Services;
+using ETicaretAPI.Application.Abstraction.Token;
 using ETicaretAPI.Application.Repositories;
 using ETicaretAPI.Domain.Entities.Identity;
 using ETicaretAPI.Persistance.Contexts;
@@ -5,9 +7,11 @@ using ETicaretAPI.Persistance.Repositories;
 using ETicaretAPI.Persistance.Repositories.Customer;
 using ETicaretAPI.Persistance.Repositories.Order;
 using ETicaretAPI.Persistance.Repositories.Product;
+using ETicaretAPI.Persistance.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ETicaretAPI.Persistance;
 
@@ -32,5 +36,6 @@ public static class ServiceRegistiration
         services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
         services.AddScoped<IOrderReadRepository, OrderReadRepository>();
         services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
+        services.AddScoped<IUserService, UserService>();
     }
 }

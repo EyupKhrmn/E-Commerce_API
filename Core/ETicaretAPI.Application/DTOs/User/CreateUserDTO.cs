@@ -1,8 +1,6 @@
-using MediatR;
+namespace ETicaretAPI.Application.DTOs.User;
 
-namespace ETicaretAPI.Application.Features.Commads.AppUser.CreateUser;
-
-public class CreateUserCommandRequest : IRequest<CreateUserCommandResponse>
+public class CreateUserDTO
 {
     public string NameSurname { get; set; }
     public string UserName { get; set; }

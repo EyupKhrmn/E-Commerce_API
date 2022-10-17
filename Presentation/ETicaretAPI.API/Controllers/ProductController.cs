@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ETicaretAPI.API.Controllers;
 
-[Authorize(AuthenticationSchemes = "Admin")]
+[Authorize]
 public class ProductController : BaseController
 {
     private readonly IMediator _mediator;

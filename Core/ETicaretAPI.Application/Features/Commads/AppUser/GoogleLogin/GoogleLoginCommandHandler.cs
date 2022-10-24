@@ -56,7 +56,7 @@ public class GoogleLoginCommandHandler : IRequestHandler<GoogleLoginCommandReque
        else
            throw new Exception("Invalid external outhentication");
 
-       Token token = _tokenHandler.CreateAccessToken(5);
+       Token token = _tokenHandler.CreateAccessToken(15);
 
        return new()
        {

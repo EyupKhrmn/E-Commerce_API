@@ -1,5 +1,6 @@
 using ETicaretAPI.Application.Abstraction.Services;
 using ETicaretAPI.Application.DTOs.User;
+using ETicaretAPI.Application.Exeptions;
 using ETicaretAPI.Application.Features.Commads.AppUser.CreateUser;
 using ETicaretAPI.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -34,5 +35,17 @@ public class UserService : IUserService
                 response.Message += $"{error.Code} - {error.Description}<br>";
 
         return response;
+    }
+
+    public async Task UpdateRefreshToken(string refreshtoken, AppUser user,DateTime AccessTokenDate,int addonaccesstoken )
+    { 
+        if (user != null)
+        {
+            user.RefreshToken = refreshtoken;
+            user.RefresTokemEndDate = AccessTokenDate.AddSeconds(addonaccesstoken);
+            await _userManager.UpdateAsync(user);
+        }
+
+        throw new NotFoundUserException();
     }
 }

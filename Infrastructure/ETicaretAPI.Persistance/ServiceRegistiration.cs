@@ -36,6 +36,7 @@ public static class ServiceRegistiration
         services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
         services.AddScoped<IOrderReadRepository, OrderReadRepository>();
         services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
+        services.AddScoped<IAutService, AutService>();
         services.AddScoped<IUserService, UserService>();
     }
 }

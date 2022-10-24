@@ -11,23 +11,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ETicaretAPI.API.Controllers;
 
-[Authorize]
+[Authorize(AuthenticationSchemes = "Bearer")]
+[Route("api/Products")]
 public class ProductController : BaseController
 {
     private readonly IMediator _mediator;
-
-
+    
     public ProductController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    [HttpGet]
+    
+    [HttpGet("GetAllProduct")]
     public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
     {
       GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
       return Ok(response.GetAllProducts);
     }
+    
     
     [HttpGet("Id")]
     public async Task<IActionResult> GetById([FromQuery] GetByIdProductQueryRequest getByIdProductQueryRequest)

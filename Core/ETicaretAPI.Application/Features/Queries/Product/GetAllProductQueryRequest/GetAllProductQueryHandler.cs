@@ -16,7 +16,7 @@ public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryReque
     
     public async Task<GetAllProductQueryResponse> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
     {
-        IQueryable<Domain.Entities.Product> getAll =  _productReadRepository.GetAll();
+        IQueryable<Domain.Entities.Product> getAll = _productReadRepository.GetAll();
         return new GetAllProductQueryResponse
         {
             GetAllProducts = getAll

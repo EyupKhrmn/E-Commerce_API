@@ -1,13 +1,16 @@
 
 using System.Text;
 using ETicaretAPI.Application;
+using ETicaretAPI.Application.Abstraction.Services;
 using ETicaretAPI.Application.Abstraction.Token;
 using ETicaretAPI.Application.ValidatonRules;
 using ETicaretAPI.Infrastructure;
 using ETicaretAPI.Infrastructure.Filters;
 using ETicaretAPI.Persistance;
+using ETicaretAPI.Persistance.Services;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
@@ -25,14 +28,35 @@ builder.Services.AddAuthentication().AddGoogle(x =>
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.AddSecurityDefinition("Token", new OpenApiSecurityScheme
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Type = SecuritySchemeType.ApiKey,
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
         In = ParameterLocation.Header,
+        Description = "Please insert JWT with Bearer into field",
         Name = HeaderNames.Authorization,
         Scheme = "Bearer"
     });
 });
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] { }
+        }
+    });
+});
+
 builder.Services.AddCors(opitons => opitons.AddDefaultPolicy( policy =>
 {
     policy.WithOrigins("https://localhost:7270/swagger", "http://localhost:7270/swagger")
@@ -46,8 +70,13 @@ builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer("Admin",options =>
+
+builder.Services.AddAuthentication(_ =>
+    {
+        _.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        _.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer("Bearer",options =>
     {
         options.TokenValidationParameters = new()
         {
@@ -55,13 +84,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            
-            
             ValidAudience = builder.Configuration["Token:Audience"],
             ValidIssuer = builder.Configuration["Token:Issuer"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SingInKey"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SingInKey"])),
+            LifetimeValidator = (notBefore,
+                expires,
+                securityToken,
+                validationParameters) => expires != null ? expires > DateTime.UtcNow : false
         };
     });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme).Build();
+});
+
 
 var app = builder.Build();
 
@@ -76,7 +115,9 @@ app.UseStaticFiles();
 app.UseCors();
 app.UseHttpsRedirection();
 
+
 app.UseAuthentication();
+app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();

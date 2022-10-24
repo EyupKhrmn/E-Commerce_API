@@ -88,3 +88,8 @@ C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaret
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Google.Apis.Core.dll
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\obj\Debug\net6.0\staticwebassets\msbuild.ETicaretAPI.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\obj\Debug\net6.0\staticwebassets\msbuild.build.ETicaretAPI.API.props
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ETicaretAPI.API.props
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ETicaretAPI.API.props
+C:\Users\T480_Home\Desktop\ETicaretUygulaması\ETicaretAPI\Presentation\ETicaretAPI.API\obj\Debug\net6.0\staticwebassets.pack.json

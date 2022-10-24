@@ -1,5 +1,7 @@
 using ETicaretAPI.Application.Repositories;
 using MediatR;
+using Microsoft.Extensions.Logging;
+using ILogger = Google.Apis.Logging.ILogger;
 
 namespace ETicaretAPI.Application.Features.Commads.Product.UpdateProduct;
 
@@ -7,11 +9,13 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandR
 {
     private readonly IProductWriteRepository _productWriteRepository;
     private readonly IProductReadRepository _productReadRepository;
+    private readonly ILogger<UpdateProductCommandHandler> _logger;
 
-    public UpdateProductCommandHandler(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository)
+    public UpdateProductCommandHandler(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository, ILogger<UpdateProductCommandHandler> logger)
     {
         _productWriteRepository = productWriteRepository;
         _productReadRepository = productReadRepository;
+        _logger = logger;
     }
 
     public async Task<UpdateProductCommandResponse> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
@@ -22,6 +26,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandR
         model.Stock = request.Stock;
         _productWriteRepository.Update(model);
         _productWriteRepository.SaveAsync();
+        _logger.LogInformation("Product Updated...");
         return new UpdateProductCommandResponse
         {
             Name = model.Name,

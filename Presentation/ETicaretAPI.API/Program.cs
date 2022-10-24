@@ -1,19 +1,24 @@
 
 using System.Text;
 using ETicaretAPI.Application;
-using ETicaretAPI.Application.Abstraction.Services;
-using ETicaretAPI.Application.Abstraction.Token;
 using ETicaretAPI.Application.ValidatonRules;
 using ETicaretAPI.Infrastructure;
 using ETicaretAPI.Infrastructure.Filters;
 using ETicaretAPI.Persistance;
-using ETicaretAPI.Persistance.Services;
+using ETicaretAPI.Persistance.Contexts;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Context;
+using Serilog.Core;
+using Serilog.Formatting.Compact;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,6 +67,27 @@ builder.Services.AddCors(opitons => opitons.AddDefaultPolicy( policy =>
     policy.WithOrigins("https://localhost:7270/swagger", "http://localhost:7270/swagger")
         .AllowAnyHeader().AllowAnyMethod();
 }));
+
+Logger log = new LoggerConfiguration()
+    .WriteTo.Console().
+    WriteTo.File("logs/log.txt")
+    .WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("Mssql"),"Logs", autoCreateSqlTable: true)
+    .Enrich.FromLogContext()
+    .MinimumLevel.Information()
+    .CreateLogger();
+
+builder.Host.UseSerilog(log);
+
+builder.Services.AddHttpLogging(logging =>
+{
+    logging.LoggingFields = HttpLoggingFields.All;
+    logging.RequestHeaders.Add("sec-ch-ua");
+    logging.MediaTypeOptions.AddText("application/javascript");
+    logging.RequestBodyLogLimit = 4096;
+    logging.ResponseBodyLogLimit = 4096;
+
+});
+
 
 builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
     .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>())
@@ -112,6 +138,8 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseStaticFiles();
+app.UseSerilogRequestLogging();
+app.UseHttpLogging();
 app.UseCors();
 app.UseHttpsRedirection();
 
@@ -119,6 +147,13 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseRouting();
 app.UseAuthorization();
+
+app.Use(async (context, next) =>
+{
+    var username = context.User?.Identity?.IsAuthenticated != null || true ? context.User.Identity.Name : null;
+    LogContext.PushProperty("user_name", username);
+    await next();
+});
 
 app.MapControllers();
 

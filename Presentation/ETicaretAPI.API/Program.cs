@@ -1,11 +1,14 @@
 
 using System.Text;
+using ETicaretAPI.API.Extentions;
 using ETicaretAPI.Application;
 using ETicaretAPI.Application.ValidatonRules;
 using ETicaretAPI.Infrastructure;
 using ETicaretAPI.Infrastructure.Filters;
 using ETicaretAPI.Persistance;
 using ETicaretAPI.Persistance.Contexts;
+using ETicaretAPI.SignalR;
+using ETicaretAPI.SignalR.Hubs;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -18,6 +21,7 @@ using Serilog;
 using Serilog.Context;
 using Serilog.Core;
 using Serilog.Formatting.Compact;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +29,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistanceService();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddSignalRServices();
 builder.Services.AddAuthentication().AddGoogle(x =>
 {
     x.ClientId = builder.Configuration["Login:GoogleClientID"];
@@ -65,7 +70,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors(opitons => opitons.AddDefaultPolicy( policy =>
 {
     policy.WithOrigins("https://localhost:7270/swagger", "http://localhost:7270/swagger")
-        .AllowAnyHeader().AllowAnyMethod();
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
 }));
 
 Logger log = new LoggerConfiguration()
@@ -136,6 +143,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 
 app.UseStaticFiles();
 app.UseSerilogRequestLogging();
@@ -156,5 +164,7 @@ app.Use(async (context, next) =>
 });
 
 app.MapControllers();
+
+app.MapHubs();
 
 app.Run();

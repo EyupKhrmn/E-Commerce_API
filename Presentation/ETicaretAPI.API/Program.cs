@@ -26,6 +26,7 @@ using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpContextAccessor();//clientten gelen request neticesinde oluşturulan httpcontex nesnesine katmanlardaki class' lar üzerinden erişebilmemizi sağlayan bir servistir.
 builder.Services.AddPersistanceService();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();

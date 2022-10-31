@@ -1,9 +1,13 @@
 using ETicaretAPI.Application.Abstraction.Services;
 using ETicaretAPI.Application.Abstraction.Token;
 using ETicaretAPI.Application.Repositories;
+using ETicaretAPI.Application.Repositories.Basket;
+using ETicaretAPI.Application.Repositories.BasketItem;
 using ETicaretAPI.Domain.Entities.Identity;
 using ETicaretAPI.Persistance.Contexts;
 using ETicaretAPI.Persistance.Repositories;
+using ETicaretAPI.Persistance.Repositories.Basket;
+using ETicaretAPI.Persistance.Repositories.BasketItem;
 using ETicaretAPI.Persistance.Repositories.Customer;
 using ETicaretAPI.Persistance.Repositories.Order;
 using ETicaretAPI.Persistance.Repositories.Product;
@@ -36,7 +40,12 @@ public static class ServiceRegistiration
         services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
         services.AddScoped<IOrderReadRepository, OrderReadRepository>();
         services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
+        services.AddScoped<IBasketReadRepository, BasketReadRepository>();
+        services.AddScoped<IBasketWriteREpository, BasketWriteRepository>();
+        services.AddScoped<IBasketItemReadRepository, BasketItemReadRepository>();
+        services.AddScoped<IBasketItemWriteRepository, BasketItemWriteRepository>();
         services.AddScoped<IAutService, AutService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IBasketService, BasketServices>();
     }
 }

@@ -10,6 +10,7 @@ public class Product: BaseEntity
 
     #region Relations
 
+    public ICollection<BasketItem> BasketItems { get; set; }
     public ICollection<Order> Orders { get; set; }
 
     #endregion

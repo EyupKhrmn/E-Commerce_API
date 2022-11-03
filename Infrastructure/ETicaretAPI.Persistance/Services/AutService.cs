@@ -28,7 +28,7 @@ public class AutService : IAutService
         if (user != null && user?.RefresTokemEndDate > DateTime.UtcNow)
         {
             Token token = _tokenHandler.CreateAccessToken(15);
-            _userService.UpdateRefreshToken(token.RefreshToken,user,token.Expiration,15);
+            await _userService.UpdateRefreshToken(token.RefreshToken,user,token.Expiration,15);
             return token;
         }
         else

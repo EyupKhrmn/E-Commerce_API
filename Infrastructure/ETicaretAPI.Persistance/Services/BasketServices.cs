@@ -1,4 +1,5 @@
 using ETicaretAPI.Application.Abstraction.Services;
+using ETicaretAPI.Application.Repositories;
 using ETicaretAPI.Application.Repositories.Basket;
 using ETicaretAPI.Application.Repositories.BasketItem;
 using ETicaretAPI.Application.ViewModel.BasketViewModel;
@@ -13,16 +14,16 @@ namespace ETicaretAPI.Persistance.Services;
 
 public class BasketServices : IBasketService
 {
-    private readonly HttpContextAccessor _httpContextAccessor;
+    private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly UserManager<AppUser> _userManager;
-    private readonly OrderReadRepository _orderReadRepository;
+    private readonly IOrderReadRepository _orderReadRepository;
     private readonly IBasketWriteREpository _basketWriteREpository;
     private readonly IBasketItemWriteRepository _basketItemWriteRepository;
     private readonly IBasketItemReadRepository _basketItemReadRepository;
-    public readonly IBasketReadRepository _basketReadRepository;
+    private readonly IBasketReadRepository _basketReadRepository;
 
-    public BasketServices(HttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager,
-        OrderReadRepository orderReadRepository, IBasketWriteREpository basketWriteREpository,
+    public BasketServices(IHttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager,
+        IOrderReadRepository orderReadRepository, IBasketWriteREpository basketWriteREpository,
         IBasketItemWriteRepository basketItemWriteRepository, IBasketReadRepository basketReadRepository,
         IBasketItemReadRepository basketItemReadRepository)
     {
@@ -58,10 +59,12 @@ public class BasketServices : IBasketService
             }
             else
             {
-                user.Baskets.Add(new());
+                targetbasket = new();
+                user.Baskets.Add(targetbasket);
             }
 
             await _basketWriteREpository.SaveAsync();
+            return targetbasket;
         }
 
         throw new Exception("Beklenmyen bir hata ile karşılaşıldı !");

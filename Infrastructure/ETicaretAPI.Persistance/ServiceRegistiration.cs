@@ -54,7 +54,8 @@ public static class ServiceRegistiration
         services.AddScoped<IBasketItemReadRepository, BasketItemReadRepository>();
         services.AddScoped<IBasketItemWriteRepository, BasketItemWriteRepository>();
         services.AddScoped<IBasketService, BasketServices>();
-        
-        
+        services.AddScoped<IOrderService, OrderService>();
+
+
     }
 }

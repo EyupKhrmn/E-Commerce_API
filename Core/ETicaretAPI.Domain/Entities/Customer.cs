@@ -8,7 +8,7 @@ public class Customer: BaseEntity
 
     #region Relations
 
-    public ICollection<Order> Orders { get; set; }
+    //public ICollection<Order> Orders { get; set; }
 
     #endregion
 }

@@ -1,4 +1,7 @@
 using ETicaretAPI.API.Controllers.Base;
+using ETicaretAPI.Application.Consts;
+using ETicaretAPI.Application.CustomAttribute;
+using ETicaretAPI.Application.Enums;
 using ETicaretAPI.Application.Features.Commads.Basket.CreateBasketItem;
 using ETicaretAPI.Application.Features.Commads.Basket.DeleteBasketItem;
 using ETicaretAPI.Application.Features.Commads.Basket.UpdateBasketItem;
@@ -21,6 +24,7 @@ public class BasketController : BaseController
     }
 
     [HttpGet]
+    [AuthorizeDefinition(Menu = AuohorizeDefinitionCustom.Baskets, ActionType = ActionType.Reading, Definiton = "Get basket items")]
     public async Task<IActionResult> GetBasketItems([FromQuery] GetAllBasketItemQueryRequest getAllBasketItemQueryRequest)
     {
        List<GetAllBasketItemQueryResponse> response = await _mediator.Send(getAllBasketItemQueryRequest);
@@ -28,6 +32,7 @@ public class BasketController : BaseController
     }
 
     [HttpPost]
+    [AuthorizeDefinition(Menu = AuohorizeDefinitionCustom.Baskets, ActionType = ActionType.Writing, Definiton = "Add item to basket")]
     public async Task<IActionResult> AddBasketItem(CreateBasketItemCommandRequest createBasketItemCommandRequest)
     {
         CreateBasketItemCommandResponse response = await _mediator.Send(createBasketItemCommandRequest);
@@ -35,6 +40,7 @@ public class BasketController : BaseController
     }
 
     [HttpPut]
+    [AuthorizeDefinition(Menu = AuohorizeDefinitionCustom.Baskets, ActionType = ActionType.Updating, Definiton = "Update baskets ıtems")]
     public async Task<IActionResult> UpdateBasketItem(UpdateBasketItemCommandRequest updateBasketItemCommandRequest)
     {
         UpdateBasketItemCommandResponse response = await _mediator.Send(updateBasketItemCommandRequest);
@@ -42,6 +48,7 @@ public class BasketController : BaseController
     }
 
     [HttpDelete("{BasketItemId}")]
+    [AuthorizeDefinition(Menu = AuohorizeDefinitionCustom.Baskets, ActionType = ActionType.Deleting, Definiton = "Delete baskets items")]
     public async Task<IActionResult> DeleteBasketItem([FromRoute] DeleteBasketItemCommandRequest deleteBasketItemCommandRequest)
     {
         DeleteBasketItemCommandResponse response = await _mediator.Send(deleteBasketItemCommandRequest);

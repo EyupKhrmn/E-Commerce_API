@@ -5,7 +5,6 @@ using ETicaretAPI.Application.Repositories.BasketItem;
 using ETicaretAPI.Application.ViewModel.BasketViewModel;
 using ETicaretAPI.Domain.Entities;
 using ETicaretAPI.Domain.Entities.Identity;
-using ETicaretAPI.Persistance.Repositories.Order;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

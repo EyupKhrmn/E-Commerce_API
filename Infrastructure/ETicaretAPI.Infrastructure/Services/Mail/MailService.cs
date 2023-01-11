@@ -29,8 +29,7 @@ public class MailService : IMailService
         }
 
         mail.Subject = subject;
-        mail.Body = body;
-        mail.From = new("eyupkhrmn45@gmail.com","Kahraman Yazılım", System.Text.Encoding.UTF8);
+        mail.Body = body; mail.From = new("eyupkhrmn45@gmail.com","Kahraman Yazılım", System.Text.Encoding.UTF8);
 
 
 

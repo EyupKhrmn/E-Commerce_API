@@ -1,5 +1,8 @@
 using System.Net;
 using ETicaretAPI.API.Controllers.Base;
+using ETicaretAPI.Application.Consts;
+using ETicaretAPI.Application.CustomAttribute;
+using ETicaretAPI.Application.Enums;
 using ETicaretAPI.Application.Features.Commads.Product.CreateProduct;
 using ETicaretAPI.Application.Features.Commads.Product.DeleteProduct;
 using ETicaretAPI.Application.Features.Commads.Product.UpdateProduct;
@@ -39,13 +42,14 @@ public class ProductController : BaseController
     }
 
     [HttpPost]
+    [AuthorizeDefinition(Menu = AuohorizeDefinitionCustom.Products, ActionType = ActionType.Writing, Definiton = "Create Product")]
     public async Task<IActionResult> Post(CreateProductCommandRequest createProductCommandRequest)
     {
         CreateProductCommandResponse createProductCommandResponse = await _mediator.Send(createProductCommandRequest);
         return StatusCode((int)HttpStatusCode.Created);
     }
 
-    [HttpPut]
+    [HttpPut][AuthorizeDefinition(Menu = AuohorizeDefinitionCustom.Products, ActionType = ActionType.Updating, Definiton = "Update Product")]
     public async Task<IActionResult> Put(UpdateProductCommandRequest updateProductCommandRequest)
     {
       UpdateProductCommandResponse result = await _mediator.Send(updateProductCommandRequest);
@@ -53,6 +57,7 @@ public class ProductController : BaseController
     }
     
     [HttpDelete]
+    [AuthorizeDefinition(Menu = AuohorizeDefinitionCustom.Products, ActionType = ActionType.Deleting, Definiton = "Delete Product")]
     public async Task<IActionResult> Delete(DeleteProductCommandRequest deleteProductCommandRequest)
     {
        await _mediator.Send(deleteProductCommandRequest);

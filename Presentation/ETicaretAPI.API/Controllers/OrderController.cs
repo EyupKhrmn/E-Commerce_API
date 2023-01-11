@@ -1,4 +1,7 @@
 using ETicaretAPI.API.Controllers.Base;
+using ETicaretAPI.Application.Consts;
+using ETicaretAPI.Application.CustomAttribute;
+using ETicaretAPI.Application.Enums;
 using ETicaretAPI.Application.Features.Commads.Order.CreateOrder;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -17,6 +20,7 @@ public class OrderController : BaseController
     }
 
     [HttpPost]
+    [AuthorizeDefinition(Menu = AuohorizeDefinitionCustom.Orders, ActionType = ActionType.Writing, Definiton = "Create Orders")]
     public async Task<IActionResult> CreateOrder(CreateOrderCommandRequest createOrderCommandRequest)
     {
          CreateOrderCommandResponse response = await _mediator.Send(createOrderCommandRequest);

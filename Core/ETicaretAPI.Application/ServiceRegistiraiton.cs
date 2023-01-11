@@ -1,5 +1,6 @@
 using System.Reflection;
 using ETicaretAPI.Application.Abstraction.Services;
+using ETicaretAPI.Application.Abstraction.Services.Configurations;
 using ETicaretAPI.Application.Abstraction.Token;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
